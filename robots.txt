@@ -1,0 +1,14 @@
+# Robots.txt page for this site
+#
+# As per the privacy policy, we
+# would not want to have any of
+# the personal details crawled,
+# please.
+#
+User-agent: *
+Allow: /
+Disallow: /modzone/
+Disallow: /voter/
+Disallow: /polls/
+Disallow: /contestant/
+Allow: /contestant/profile/
