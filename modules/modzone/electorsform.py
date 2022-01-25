@@ -71,13 +71,17 @@ class ElectorMod(forms.Form):
 
     votersMinAge = forms.IntegerField(
         min_value=0,
-        help_text="The minimum age required to vote",
+        max_value=100,
+        help_text="The minimum age required to vote, from 0",
         required=False
     )
 
     votersMaxAge = forms.IntegerField(
         min_value=0,
-        help_text="The maximum age required to vote",
+        max_value=100,
+        help_text=(
+            "The maximum age required to vote, 100 for no upper age bound"
+        ),
         required=False
     )
 
@@ -90,12 +94,17 @@ class ElectorMod(forms.Form):
 
     candidatesMinAge = forms.IntegerField(
         min_value=0,
-        help_text="The minimum age required to contest for power",
+        max_value=100,
+        help_text="The minimum age required to contest for power, from 0",
         required=False
     )
 
     candidatesMaxAge = forms.IntegerField(
         min_value=0,
-        help_text="The maximum age required to contest for power",
+        max_value=100,
+        help_text=" ".join([
+            "The maximum age required to contest for power,",
+            "100 for no upper age bound"
+        ]),
         required=False
     )
