@@ -51,7 +51,7 @@
     <body>
         <header class="appbar">Contestant Profile</header>
         <h1>{{ party.party_name }}</h1>
-        {% if party.tosViolation %}
+        {% if canShowTOSViolation %}
         <h1 class="appbar violated_appbar">
             <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
             <span class="violated_text">
