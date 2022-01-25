@@ -22,6 +22,7 @@
 
     <body>
         <header class="appbar">Mod zone</header>
+        <h1>Search Profiles</h1>
         <table>
             <tr>
                 <td>
@@ -42,9 +43,21 @@
                 </tr>
             </table>
         </form>
+        {% if form is not None %}
+        <h1>Monitor Account</h1>
         <form action="/modzone/ban/" id="profile_ban" method="POST">
             <table>
                 {{ form.as_table }} {% csrf_token %}
+                <tr>
+                    <td colspan="2">
+                        <button
+                            class="submitbtn"
+                            onclick="javascript:openProfile()"
+                        >
+                            Open Profile
+                        </button>
+                    </td>
+                </tr>
                 <tr>
                     <td colspan="2">
                         <input
@@ -56,11 +69,17 @@
                 </tr>
             </table>
         </form>
+        {% endif %}
         <script>
             function nota() {
                 document.getElementById("id_party_name").value =
                     String("None of the above");
                 document.getElementById("profile_check").submit();
+            }
+            function openProfile() {
+                var profileId = document.getElementById("id_party_id").value;
+                var url = "/contestant/profile/" + String(profileId);
+                window.open(url);
             }
         </script>
     </body>
