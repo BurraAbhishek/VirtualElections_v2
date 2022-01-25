@@ -33,6 +33,14 @@ def render_modzone(request):
                     {"party_name": searchTerm},
                     {'$set': {"tosViolation": True}}
                 )
+                return render(
+                    request,
+                    "modzone/ban.html",
+                    {
+                        "search": SearchProfile(),
+                        "form": None
+                    }
+                )
             elif len(searchuser) == 1:
                 return render(
                     request,
