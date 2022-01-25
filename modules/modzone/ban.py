@@ -29,16 +29,22 @@ def render_modzone(request):
             user3 = mongo_client.db_get_collection("user3")
             searchuser = list(user3.find({"party_name": searchTerm}))
             if len(searchuser) > 1:
-                user3.update_many(
-                    {"party_name": searchTerm},
-                    {'$set': {"tosViolation": True}}
-                )
+                form = []
+                for i in searchuser:
+                    form.append(
+                        Disqualify(
+                            initial={
+                                "party_id": i["_id"],
+                                "current_Status": i["tosViolation"]
+                            }
+                        )
+                    )
                 return render(
                     request,
                     "modzone/ban.html",
                     {
                         "search": SearchProfile(),
-                        "form": None
+                        "form": form
                     }
                 )
             elif len(searchuser) == 1:
@@ -47,12 +53,12 @@ def render_modzone(request):
                     "modzone/ban.html",
                     {
                         "search": SearchProfile(),
-                        "form": Disqualify(
+                        "form": [Disqualify(
                             initial={
                                 "party_id": searchuser[0]["_id"],
                                 "current_Status": searchuser[0]["tosViolation"]
                             }
-                        )
+                        )]
                     }
                 )
             else:
@@ -121,12 +127,12 @@ def ban(request):
                 "modzone/ban.html",
                 {
                     "search": SearchProfile(),
-                    "form": Disqualify(
+                    "form": [Disqualify(
                         initial={
                             "party_id": uid,
                             "current_Status": tosViolation
                         }
-                    )
+                    )]
                 }
             )
         else:
@@ -135,7 +141,7 @@ def ban(request):
                 "modzone/ban.html",
                 {
                     "search": SearchProfile(),
-                    "form": Disqualify()
+                    "form": [Disqualify()]
                 }
             )
     else:
