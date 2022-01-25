@@ -132,12 +132,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# IMPORTANT! DO NOT USE STATICFILES_DIRS IN PRODUCTION!
-# If none of the static files load in development mode, set this variable
-# Point this variable to the location of your static files.
-# In development mode, you can point it to the static folder in the project 
-# directory. For example:
-# STATICFILES_DIRS = ('/home/burraabhishek/virtualelections_v2/static/',)
+# Location of static files. 
+# Do not use this if your static files are not self-hosted.
+# For example:
+STATICFILES_DIRS = (BASE_DIR.joinpath('static'),)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
