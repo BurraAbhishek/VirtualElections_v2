@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Virtual Election Administration</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+        </script>
+        <style>
+            p1 {
+                padding: 1% 1%;
+                font-size: 1.3em;
+            }
+
+            h1 {
+                background-color: inherit;
+                color: inherit;
+            }
+
+            .flexbar {
+                width: 99%;
+                display: flex;
+                flex-direction: row;
+                padding: 0.5% 0.5%;
+                flex-grow: 1;
+            }
+
+            .flexcolumn {
+                flex-direction: column;
+            }
+
+            .flexcenter {
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .flex-links {
+                display: flex;
+                flex-grow: 1;
+            }
+
+            .text-padded {
+                padding: 0.5% 0.5%;
+            }
+
+            .image_fit {
+                max-width: 40vw;
+                max-height: 65vh;
+                height: auto;
+                width: auto;
+            }
+
+            .get-started {
+                font-size: 1.25em;
+                background-color: #ffc107;
+                color: #212121;
+                padding: 1% 2%;
+                margin-top: 1%;
+                text-decoration: none;
+                border-color: initial;
+                border-radius: 1%;
+            }
+
+            table {
+                table-layout: initial;
+            }
+
+            th,
+            td {
+                padding: 2.5% 2.5%;
+                min-width: 15vw;
+            }
+
+            input {
+                width: 95%;
+            }
+
+            @media only screen and (max-width: 600px) {
+                .flexbar {
+                    flex-direction: column;
+                }
+                th {
+                    font-size: 1rem;
+                    min-width: 25vw;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="appbar">Virtual Election Portal Administration</header>
+        <h2>
+            <div class="flexbar flexcenter">
+                <!-- Important announcements go here... -->
+                IMPORTANT! If you're not an admin, don't even try to login. You
+                will be IP-banned if you cannot authenticate yourself.
+            </div>
+        </h2>
+        <div id="mainbody" class="mainbody flexbar flexcenter">
+            <!-- This div object describes your tool, so customize it as much as you want! -->
+            <div class="flexbar flexcenter">
+                <img
+                    src="{% static '/images/evm.png' %}"
+                    alt="Electronic Voting Machine in a smartphone"
+                    class="image_fit"
+                />
+            </div>
+            <div class="flexbar flexcenter flexcolumn">
+                <form action="/modzone/authenticate/" method="POST">
+                    <table>
+                        <tr>
+                            <th colspan="2">Login | ADMINS ONLY</th>
+                        </tr>
+                        {{ login.as_table }} {% csrf_token %}
+                        <tr>
+                            <td colspan="2">
+                                <input
+                                    type="submit"
+                                    class="get-started"
+                                    value="Authenticate"
+                                />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

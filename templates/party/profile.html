@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Virtual Election Administration</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+        </script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static '/fa/css/font-awesome-exclamation-circle.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static '/css/tos_warning.css' %}"
+        />
+        <style>
+            #profile_symbol {
+                max-height: 20vh;
+                width: auto;
+                padding: 2% 2%;
+            }
+            .flexbar {
+                width: 99%;
+                display: flex;
+                flex-direction: row;
+                margin: 2% 2%;
+                padding: 0.5% 0.5%;
+            }
+            .profile_text {
+                padding: 0 3%;
+                min-width: 80vw;
+            }
+            .profile_text_table {
+                width: 100%;
+            }
+            @media only screen and (max-width: 600px) {
+                .flexbar {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="appbar">Contestant Profile</header>
+        <h1>{{ party.party_name }}</h1>
+        {% if party.tosViolation %}
+        <h1 class="appbar violated_appbar">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            <span class="violated_text">
+                This contestant violated the Election Code of Conduct
+            </span>
+        </h1>
+        {% endif %}
+        <div class="flexbar">
+            <div id="profile_photo">
+                <img
+                    id="profile_symbol"
+                    src="{% static '/images/contestant.png' %}"
+                    alt=""
+                />
+            </div>
+            <div class="profile_text">
+                <table class="profile_text_table">
+                    <tr>
+                        <th>Candidate</th>
+                        <td>{{ party.candidate_name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Candidate's Age</th>
+                        <td>{{ party.candidate_age }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

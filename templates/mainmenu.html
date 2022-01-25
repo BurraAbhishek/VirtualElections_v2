@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Virtual Election</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+        </script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static '/css/menu.css' %}"
+        />
+    </head>
+
+    <body>
+        <header class="appbar">Main Menu</header>
+        <h1>Useful links</h1>
+        <div id="mainbody" class="mainbody flexbar">
+            <!-- This div object describes your tool, so customize it as much as you want! -->
+            <a class="flex-links" href="/">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/homepage.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Home</div>
+                    <div class="flex-links-description">
+                        Select this option to return to the index page.
+                    </div>
+                </div>
+            </a>
+            <a class="flex-links" href="/voter/">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/voter.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Voter section</div>
+                    <div class="flex-links-description">
+                        Select this option to exercise your right to vote.
+                    </div>
+                </div>
+            </a>
+            <a class="flex-links" href="/contestant/">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/contestant.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Contestant section</div>
+                    <div class="flex-links-description">
+                        Select this option to contest in an election.
+                    </div>
+                </div>
+            </a>
+            <a class="flex-links" href="/results/" target="_blank">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/results.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Results</div>
+                    <div class="flex-links-description">
+                        Select this option to view the results of the election
+                        conducted here. The page opens in a new tab.
+                    </div>
+                </div>
+            </a>
+            <a class="flex-links" href="/customize/" target="_blank">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/customize.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Customization</div>
+                    <div class="flex-links-description">
+                        Select this option to change the site appearance on your
+                        browser. The page opens in a new tab.
+                    </div>
+                </div>
+            </a>
+            <a class="flex-links" href="/docs/">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/documentation.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Documentation</div>
+                    <div class="flex-links-description">
+                        Select this option to view the site documentation,
+                        including the source code, changelog, FAQ, and the
+                        privacy policy.
+                    </div>
+                </div>
+            </a>
+        </div>
+    </body>
+</html>

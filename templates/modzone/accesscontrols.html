@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Virtual Election Administration</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+        </script>
+        <style>
+            table {
+                width: 98%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="appbar">Access Controls</header>
+        <form action="/modzone/access/" method="POST">
+            <table>
+                {{ form.as_table }} {% csrf_token %}
+                <tr>
+                    <td colspan="2">
+                        <input
+                            type="submit"
+                            class="submitbtn"
+                            value="Save Settings"
+                        />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

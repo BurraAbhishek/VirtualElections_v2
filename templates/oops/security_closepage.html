@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Success</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+            var s = document.createElement("link");
+            s.rel = "stylesheet";
+            s.setAttribute("type", "text/css");
+            s.href = "{% static '/css/virtualelection.css' %}";
+            if (typeof Storage !== "undefined") {
+                if (
+                    localStorage.getItem("virtualelection_colormode") == "Dark"
+                ) {
+                    s.href = "{% static '/css/virtualelection_darkmode.css' %}";
+                }
+            }
+            document.head.appendChild(s);
+        </script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static '/fa/css/font-awesome-exclamation-circle.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static '/css/tos_warning.css' %}"
+        />
+    </head>
+
+    <body>
+        <h1 class="appbar violated_appbar">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            <span class="violated_text"
+                >{{ success_text }} | Security Recommendation</span
+            >
+        </h1>
+        <h2>What happened?</h2>
+        <div class="text-padded">{{ success_message }}</div>
+        <h2>What should I do now?</h2>
+        <div class="text-padded">
+            It is recommended that you close this page for security reasons.
+            This is to ensure that no one can steal your credentials by using
+            the back button on your web browser.
+        </div>
+    </body>
+</html>

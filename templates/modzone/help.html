@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Virtual Election Administration</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+        </script>
+        <style>
+            table {
+                width: 98%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="appbar">Moderation Help pages</header>
+        <h1>This page is still under construction!</h1>
+        <h2>Election settings are still under construction</h2>
+        <p1>They will soon be released.</p1>
+        <h2>How to disable "None of the above" votes?</h2>
+        <p1>
+            Disqualify "None of the above". Go to "Monitor Contestants", then
+            click on the button for monitoring "None of the above" votes, then
+            set Current Status to Disqualify and save. To re-enable that option,
+            just do the same, but set Current Status to Clean.
+        </p1>
+    </body>
+</html>

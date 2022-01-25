@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>This page has been retired</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+        </script>
+        <style>
+            a {
+                text-decoration: none;
+                font-size: 1em;
+                color: #ffffff;
+            }
+
+            .mainbody {
+                font-size: 1.1em;
+                padding: 1% 1%;
+            }
+
+            .flexbar {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                padding: 0.5% 0.5%;
+                flex-grow: 1;
+            }
+
+            .flex-links {
+                display: flex;
+                flex-grow: 1;
+                background-color: inherit;
+                color: #ffffff;
+                font-size: 1em;
+                padding: 0;
+                margin: 0;
+                width: initial;
+            }
+
+            .text-padded {
+                padding: 0.5% 0.5%;
+            }
+
+            @media only screen and (max-width: 600px) {
+                .flexbar {
+                    flex-direction: column;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="appbar">This page has been retired</header>
+        <div id="mainbody" class="mainbody">
+            This page has been removed and is no longer accessible.
+            <h2>Reasons for removing this page</h2>
+            <ul>
+                <li>
+                    The hyperlinks in this page are broken. They were meant to
+                    be accessible with the old version, but now that is no
+                    longer feasible.
+                </li>
+                <li>
+                    Much of the information is outdated. The relevant
+                    information is available in the
+                    <a href="/docs/">documentation</a> and the
+                    <a href="/">current homepage</a>.
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>

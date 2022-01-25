@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Terms of Service</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+        </script>
+        <style>
+            p1 {
+                font-size: 1.2em;
+                padding: 0;
+            }
+
+            .flex-links {
+                background-color: inherit;
+                color: #3399ff;
+                text-decoration: none;
+                font-size: inherit;
+                display: inline;
+                margin: 0;
+                padding: 0;
+            }
+
+            .text-padded {
+                padding: 0.5% 0.5%;
+                font-size: 1.2em;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Terms of Service</h1>
+        <h2>TL;DR</h2>
+        <div class="text-padded">
+            <p1>
+                <ul>
+                    <li>Follow the election code of conduct.</li>
+                    <li>
+                        Do not attempt any cyber attack on this website. If you
+                        want to test this site for vulnerabilities, please do so
+                        on your local copy only.
+                    </li>
+                    <li>
+                        Do not try to access admin pages if you are not an
+                        admin.
+                    </li>
+                </ul>
+            </p1>
+        </div>
+    </body>
+</html>

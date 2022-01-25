@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Virtual Election Administration</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+        </script>
+        <style>
+            #ballot {
+                display: none;
+            }
+            #evm {
+                margin: 2vh 4vw;
+                min-width: 90vw;
+            }
+            button {
+                font-size: 0.8em;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="appbar">Cast Vote</header>
+        <table id="evm">
+            <tr>
+                <th>Party Name</th>
+                <th>Candidate Name</th>
+                <th>Cast Vote</th>
+            </tr>
+            {% for i in candidates %}
+            <tr>
+                <td>{{ i.party_name }}</td>
+                <td>{{ i.candidate_name }}</td>
+                <td>
+                    <button
+                        onclick="javascript:vote(
+                        '{{ i.id }}', 
+                        '{{ i.party_name }}'
+                    )"
+                    >
+                        {% if i.party_name != "None of the above" %} Vote for
+                        this candidate {% else %} Vote for none of these
+                        candidates {% endif %}
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <form action="/polls/cast/" id="ballot" method="POST">
+            <table>
+                {{ form.as_table }} {% csrf_token %}
+            </table>
+        </form>
+        <script>
+            function vote(candidate_id, party_name) {
+                document.getElementById("id_party_id").value = candidate_id;
+                if (
+                    confirm(
+                        "Are you really sure that you want to vote for " +
+                            String(party_name) +
+                            "?"
+                    )
+                ) {
+                    document.getElementById("ballot").submit();
+                }
+            }
+        </script>
+    </body>
+</html>

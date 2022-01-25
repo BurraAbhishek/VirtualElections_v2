@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Virtual Election</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+        </script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static '/css/menu.css' %}"
+        />
+    </head>
+
+    <body>
+        <header class="appbar">Documentation</header>
+        <h1>Useful links</h1>
+        <div id="mainbody" class="mainbody flexbar">
+            <!-- This div object describes your tool, so customize it as much as you want! -->
+            <a class="flex-links" href="/source/" target="_blank">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/sourcecode.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Source code</div>
+                    <div class="flex-links-description">
+                        Select this option to view the source code. The page
+                        opens in a new tab.
+                    </div>
+                </div>
+            </a>
+            <a class="flex-links" href="/changelog/" target="_blank">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/changelog.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Changelog</div>
+                    <div class="flex-links-description">
+                        Select this option to view the changes made to this
+                        site. This page opens in a new tab.
+                    </div>
+                </div>
+            </a>
+            <a class="flex-links" href="/privacy/" target="_blank">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/privacypolicy.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Privacy Policy</div>
+                    <div class="flex-links-description">
+                        Select this option to view the privacy policy of this
+                        site. This page opens in a new tab.
+                    </div>
+                </div>
+            </a>
+            <a class="flex-links" href="/terms-of-service/" target="_blank">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/tos.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Terms of Service</div>
+                    <div class="flex-links-description">
+                        Select this option to read our terms of use. This page
+                        opens in a new tab.
+                    </div>
+                </div>
+            </a>
+            <a class="flex-links" href="/faq/" target="_blank">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/FAQ.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">
+                        Frequently Asked Questions
+                    </div>
+                    <div class="flex-links-description">
+                        Select this option to view some frequently asked
+                        questions. This page opens in a new tab.
+                    </div>
+                </div>
+            </a>
+            <a class="flex-links" href="/oldhomepage/" target="_blank">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/homepage.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Old homepage</div>
+                    <div class="flex-links-description">
+                        Select this option to open the old homepage. The page
+                        opens in a new tab.
+                    </div>
+                </div>
+            </a>
+            <a class="flex-links" href="/menu/">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/menu_bar.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Main menu</div>
+                    <div class="flex-links-description">
+                        Select this option to return to the main menu.
+                    </div>
+                </div>
+            </a>
+        </div>
+    </body>
+</html>

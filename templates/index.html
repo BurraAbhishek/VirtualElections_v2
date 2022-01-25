@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Virtual Election</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+        </script>
+        <style>
+            p1 {
+                padding: 1% 1%;
+            }
+
+            h1 {
+                background-color: inherit;
+                color: inherit;
+            }
+
+            .flexbar {
+                width: 99%;
+                display: flex;
+                flex-direction: row;
+                padding: 0.5% 0.5%;
+                flex-grow: 1;
+            }
+
+            .flexcolumn {
+                flex-direction: column;
+            }
+
+            .flexcenter {
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .flex-links {
+                display: flex;
+                flex-grow: 1;
+            }
+
+            .text-padded {
+                padding: 0.5% 0.5%;
+            }
+
+            .image_fit {
+                max-width: 40vw;
+                max-height: 65vh;
+                height: auto;
+                width: auto;
+            }
+
+            .get-started {
+                font-size: 1.25em;
+                background-color: #ffc107;
+                color: #212121;
+                padding: 1% 2%;
+                text-decoration: none;
+                border-radius: 5%;
+            }
+
+            @media only screen and (max-width: 600px) {
+                .flexbar {
+                    flex-direction: column;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="appbar">Virtual Election Portal</header>
+        <h2>
+            <div class="flexbar flexcenter">
+                <!-- Important announcements go here... -->
+                &nbsp;
+            </div>
+        </h2>
+        <div id="mainbody" class="mainbody flexbar flexcenter">
+            <!-- This div object describes your tool, so customize it as much as you want! -->
+            <div class="flexbar flexcenter">
+                <img
+                    src="{% static '/images/evm.png' %}"
+                    alt="Electronic Voting Machine in a smartphone"
+                    class="image_fit"
+                />
+            </div>
+            <div class="flexbar flexcenter flexcolumn">
+                <h1>
+                    Forever free, adless and open-source platform to conduct
+                    elections remotely.
+                </h1>
+                <a href="/menu/" class="get-started">Get Started</a>
+            </div>
+        </div>
+    </body>
+</html>

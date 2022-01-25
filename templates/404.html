@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Page not found</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(0);
+        </script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static '/fa/css/font-awesome-exclamation-circle.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static '/css/tos_warning.css' %}"
+        />
+    </head>
+
+    <body>
+        <h1 class="appbar violated_appbar">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            <span class="violated_text">Page not found | Error 404</span>
+        </h1>
+        <h2>What happened?</h2>
+        <div class="text-padded">The requested webpage was not found.</div>
+        <h2>What should I do now?</h2>
+        <div class="text-padded">
+            <ul>
+                <li>
+                    If you entered the URL manually, please check your spelling
+                    and try again.
+                </li>
+                <li>
+                    If you are really sure that you entered the correct URL,
+                    then the resource might be unavailable. In this case, you
+                    may want to search from the homepage.
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>

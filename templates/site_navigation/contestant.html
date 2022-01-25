@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Virtual Election</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+        </script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static '/css/menu.css' %}"
+        />
+    </head>
+
+    <body>
+        <header class="appbar">Contestant section</header>
+        <h1>Useful links</h1>
+        <div id="mainbody" class="mainbody flexbar">
+            <!-- This div object describes your tool, so customize it as much as you want! -->
+            <a
+                class="flex-links"
+                href="/contestant/registration/"
+                target="_blank"
+            >
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/contestantaddition.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">New registration</div>
+                    <div class="flex-links-description">
+                        Select this option to sign up (Fresh registration) as a
+                        contestant. The page opens in a new tab.
+                    </div>
+                </div>
+            </a>
+            <a class="flex-links" href="/contestant/edit/" target="_blank">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/contestant.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Edit Contestant profile</div>
+                    <div class="flex-links-description">
+                        Select this option to edit your contestant details on
+                        this site. The page opens in a new tab.
+                    </div>
+                </div>
+            </a>
+            <a class="flex-links" href="/menu/">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/menu_bar.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Main menu</div>
+                    <div class="flex-links-description">
+                        Select this option to return to the main menu.
+                    </div>
+                </div>
+            </a>
+        </div>
+    </body>
+</html>

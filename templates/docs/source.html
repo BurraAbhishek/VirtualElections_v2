@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+        </script>
+        <script>
+            loadCSS(2);
+        </script>
+        <style>
+            .text-padded {
+                padding: 1% 1%;
+                font-size: 1.4em;
+            }
+
+            .flex-links {
+                padding: 0;
+                background-color: inherit;
+                color: #3399ff;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Source Code</h1>
+        <div class="text-padded">
+            This software is free (libre) and open-source. You can download,
+            read, use and modify every bit of source code.
+        </div>
+        <h1>Where can I find the source code?</h1>
+        <div class="text-padded">
+            <a
+                class="flex-links"
+                href="https://github.com/BurraAbhishek/VirtualElections_v2"
+                >BurraAbhishek/VirtualElections_v2</a
+            >
+            This repository contains the original source code of the latest
+            version.
+            <br />
+            <br />
+            <a
+                class="flex-links"
+                href="https://github.com/BurraAbhishek/VirtualElections"
+                >BurraAbhishek/VirtualElections</a
+            >
+            This repository contains the source code of the previous (PHP)
+            version.
+            <br />
+            <br />
+            License: Both repositories are dual Licensed with choice of Apache
+            2.0 or GNU AGPL v3.0+
+            <br />
+            This dual-licensing is to help those companies which prohibit AGPL
+            source code in their codebases. This permits use of part/entire code
+            in proprietary codebases, provided that the AGPL license is not
+            explicitly referred to. However, the freedoms guaranteed by the GNU
+            AGPL must not be taken away from either of the original source
+            repositories, and those forks which have AGPL as one of the
+            licenses.
+        </div>
+        <h1>External resources</h1>
+        <div class="text-padded">
+            <a class="flex-links" href="https://fontawesome.com"
+                >https://fontawesome.com</a
+            >
+            Font Awesome icons from v4.7 | Font License: SIL Open Font License
+            1.1 | CSS License: MIT License
+        </div>
+        <div class="text-padded">
+            <a class="flex-links" href="https://fonts.google.com"
+                >https://fonts.google.com</a
+            >
+            Google Fonts: Roboto (by Christian Robertson) | License: Apache 2.0
+            <br />
+            Google Fonts: Noto Sans (By Google) | License: SIL Open Font License
+        </div>
+    </body>
+</html>

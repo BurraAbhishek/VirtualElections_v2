@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>NOTICE TO ATTEND</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+        </script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static '/fa/css/font-awesome-exclamation-circle.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static '/css/tos_warning.css' %}"
+        />
+    </head>
+
+    <body>
+        <h1 class="appbar violated_appbar">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            <span class="violated_text"
+                >This account violated the Terms of Service</span
+            >
+        </h1>
+        <h2>What happened?</h2>
+        <div class="text-padded">
+            Don't ask us. You were warned. You broke the rules, and hence, we
+            will not remove the mark on your online fingerprint.
+        </div>
+        <h2>What should I do now?</h2>
+        <div class="text-padded">
+            Just appeal the official way. You also have the option of closing
+            this page.
+            <br />
+            Further attempts to break the rules or break into the website will
+            be reported to the relevant law-enforcement agencies.
+        </div>
+    </body>
+</html>

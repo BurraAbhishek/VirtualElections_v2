@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Changelog</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+        </script>
+        <style>
+            h2 {
+                margin-bottom: 0;
+            }
+
+            p1 {
+                font-size: 1.25em;
+                padding: 0;
+            }
+
+            li {
+                padding: 0.2% 0;
+            }
+
+            .text-padded {
+                padding: 0.2% 1.2%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Changelog</h1>
+        <p1 class="text-padded">
+            Here's a summary of user-facing changes. To view all changes, visit
+            the open-source repositories this website is made of.
+        </p1>
+        <h2>January 17, 2022</h2>
+        <p1>
+            <ul>
+                <li>
+                    Allow dual licensing under the Apache License, Version 2.0
+                    and the GNU Affero General Public License, Version 3 or
+                    later at your choice.
+                </li>
+            </ul>
+        </p1>
+        <h2>September 4, 2021</h2>
+        <p1>
+            <ul>
+                <li>Use Google Fonts throughout application.</li>
+                <li>
+                    Change the exclamation in the red tags from image to Font
+                    Awesome 4.7 exclamation.
+                </li>
+                <li>
+                    All error pages use bright red notices instead of plain
+                    text.
+                </li>
+            </ul>
+        </p1>
+        <h2>August 8, 2021</h2>
+        <p1>
+            <ul>
+                <li>
+                    Use system fonts throughout this application as a part of
+                    the CSS font stack.
+                </li>
+                <li>
+                    Updated privacy policy to include CSRF prevention and
+                    improve readability.
+                </li>
+            </ul>
+        </p1>
+        <h2>August 7, 2021</h2>
+        <p1>
+            <ul>
+                <li>
+                    Major overhaul of the website, including bug fixes and
+                    improvements.
+                </li>
+                <li>
+                    Use custom 403 and 503 error pages while returning HTTP
+                    status code of 200 in each case.
+                </li>
+                <li>Use anti-CSRF tokens.</li>
+                <li>
+                    Replace Apache License, Version 2.0 with GNU Affero General
+                    Public License v3.0
+                </li>
+            </ul>
+        </p1>
+        <h2>August 6, 2021</h2>
+        <p1>
+            <ul>
+                <li>
+                    Increase font size on all inputs, so that they are more
+                    readable.
+                </li>
+                <li>Fix Cross-site scripting (XSS) vulnerabilities.</li>
+                <li>
+                    Use custom error pages instead of JavaScript alerts in
+                    voting pages.
+                </li>
+                <li>Session cookies are httponly and samesite = "strict".</li>
+            </ul>
+        </p1>
+        <h2>August 5, 2021</h2>
+        <p1>
+            <ul>
+                <li>New moderation tools for site admins.</li>
+                <li>Fix bug in theme changing.</li>
+                <li>Fix path traversal vulnerability.</li>
+                <li>
+                    Use custom error pages instead of JavaScript alerts in
+                    registration pages.
+                </li>
+                <li>virtualelection.sql is no longer available.</li>
+            </ul>
+        </p1>
+        <h2>July 22, 2021</h2>
+        <p1>
+            <ul>
+                <li>
+                    Use of virtualelection.sql to setup the database is disabled
+                    and deprecated.
+                </li>
+            </ul>
+        </p1>
+        <h2>July 17, 2021</h2>
+        <p1>
+            <ul>
+                <li>A new, revamped User Interface for the Main Menu.</li>
+                <li>Changelog added and accessible from the Main Menu.</li>
+                <li>Privacy Policy added.</li>
+                <li>Terms of Service section and FAQ Section added.</li>
+            </ul>
+        </p1>
+        <h2>July 16, 2021</h2>
+        <p1>
+            <ul>
+                <li>
+                    Users can now toggle between light and dark modes from the
+                    main menu.
+                </li>
+            </ul>
+        </p1>
+        <h2>July 14, 2021</h2>
+        <p1>
+            <ul>
+                <li>
+                    Allow site administrators to encrypt data before saving in
+                    the database.
+                </li>
+            </ul>
+        </p1>
+        <h2>July 5, 2021</h2>
+        <p1>
+            <ul>
+                <li>
+                    Administrators can now setup the database directly from a
+                    webpage.
+                </li>
+            </ul>
+        </p1>
+        <h2>July 2, 2021</h2>
+        <p1>
+            <ul>
+                <li>A new, revamped home page.</li>
+                <li>Voters can now edit their details.</li>
+                <li>Add site documentation.</li>
+            </ul>
+        </p1>
+        <h2>June 29, 2021</h2>
+        <p1>
+            <ul>
+                <li>Restrict user inputs for security reasons.</li>
+                <li>Mark accounts which circumvent input restrictions.</li>
+            </ul>
+        </p1>
+        <h2>June 26, 2021</h2>
+        <p1>
+            <ul>
+                <li>Store the database details in one place.</li>
+                <li>Use PHP classes wherever applicable.</li>
+            </ul>
+        </p1>
+        <h2>April 30, 2021</h2>
+        <p1>
+            <ul>
+                <li>First stable version</li>
+                <li>
+                    Replace button tag with input type button to mitigate
+                    cross-site scripting attacks.
+                </li>
+            </ul>
+        </p1>
+        <h2>April 25, 2021</h2>
+        <p1>
+            <ul>
+                <li>Fix wrong redirect URLs.</li>
+            </ul>
+        </p1>
+        <h2>April 23, 2021</h2>
+        <p1>
+            <ul>
+                <li>
+                    Replace default error messages with human-readable and
+                    custom error messages.
+                </li>
+            </ul>
+        </p1>
+        <h2>April 21, 2021</h2>
+        <p1>
+            <ul>
+                <li>
+                    Add admin table to regulate the access of each module as per
+                    schedule.
+                </li>
+            </ul>
+        </p1>
+        <h2>April 20, 2021</h2>
+        <p1>
+            <ul>
+                <li>
+                    Initial commits include README, license and an alpha release
+                    of the site.
+                </li>
+                <li>Site open-sourced under the Apache 2.0 License</li>
+            </ul>
+        </p1>
+    </body>
+</html>

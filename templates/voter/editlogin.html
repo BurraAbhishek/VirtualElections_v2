@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Virtual Election Administration</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+        </script>
+    </head>
+
+    <body>
+        <header class="appbar">Edit voter details</header>
+        <form action="/voter/edit/" method="POST">
+            <table>
+                {{ form.as_table }} {% csrf_token %}
+                <tr>
+                    <td colspan="2">
+                        <input
+                            type="submit"
+                            class="submitbtn"
+                            value="{{ submitlabel }}"
+                        />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

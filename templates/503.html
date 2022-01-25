@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Maintenance in progress</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+        </script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static '/fa/css/font-awesome-exclamation-circle.css' %}"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static '/css/tos_warning.css' %}"
+        />
+    </head>
+
+    <body>
+        <h1 class="appbar violated_appbar">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            <span class="violated_text"
+                >Server under maintenance | Error 503</span
+            >
+        </h1>
+        <h2>What happened?</h2>
+        <div class="text-padded">
+            The webhost has currently placed our main server under maintenance.
+            This ensures that the server and the application will run smoothly
+            for a long time to come. Therefore, this website is temporarily
+            inaccessible.
+        </div>
+        <h2>What should I do now?</h2>
+        <div class="text-padded">Please try again after a few hours.</div>
+    </body>
+</html>

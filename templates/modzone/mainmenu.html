@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Virtual Election</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+        </script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static '/css/menu.css' %}"
+        />
+    </head>
+
+    <body>
+        <header class="appbar">Main Menu</header>
+        <h1>Useful links</h1>
+        <div id="mainbody" class="mainbody flexbar">
+            <!-- This div object describes your tool, so customize it as much as you want! -->
+
+            <a class="flex-links" href="/modzone/getstarted/" target="_blank">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/openbook.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Get started</div>
+                    <div class="flex-links-description">
+                        Select this option if you are visiting this site for the
+                        first time.
+                    </div>
+                </div>
+            </a>
+            <a class="flex-links" href="/modzone/access/" target="_blank">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/redkey.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Access Control</div>
+                    <div class="flex-links-description">
+                        Manage access to various site sections.
+                    </div>
+                </div>
+            </a>
+            <a class="flex-links" href="/modzone/regulation/" target="_blank">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/keyupdate.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Election Settings</div>
+                    <div class="flex-links-description">
+                        Various options to control the elections and ensure that
+                        the elections remain free and fair for all.
+                    </div>
+                </div>
+            </a>
+            <a class="flex-links" href="/modzone/mod/" target="_blank">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/redkey.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Monitor Contestants</div>
+                    <div class="flex-links-description">
+                        Ensure that contestants follow the rules, and disqualify
+                        those who break the rules.
+                    </div>
+                </div>
+            </a>
+            <a class="flex-links" href="/customize/" target="_blank">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/customize.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Customization</div>
+                    <div class="flex-links-description">
+                        Select this option to change the site appearance on your
+                        browser. The page opens in a new tab.
+                    </div>
+                </div>
+            </a>
+            <a class="flex-links" href="/modzone/logout/">
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="{% static '/images/homepage.png' %}"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">Sign out</div>
+                    <div class="flex-links-description">
+                        Select this option to sign out. You can sign in again.
+                    </div>
+                </div>
+            </a>
+            <!-- TEMPORARY LINKS CONTAINER BEGINS -->
+            <!--
+            <a
+                class="flex-links"
+                href="../db/setup/dbsetup.php"
+                target="_blank"
+            >
+                <div class="flex-links-icon-div">
+                    <img
+                        class="flex-links-icon"
+                        src="../public/images/dbaddition.png"
+                    />
+                </div>
+                <div class="flexbar">
+                    <div class="flex-links-title">
+                        Create a new election database
+                    </div>
+                    <div class="flex-links-description">
+                        Select this option to instantly create a new database.
+                    </div>
+                </div>
+            </a>
+        -->
+            <!-- TEMPORARY LINKS CONTAINER ENDS -->
+        </div>
+    </body>
+</html>
