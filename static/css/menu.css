@@ -1,0 +1,40 @@
+p1 {
+    padding: 1% 1%;
+}
+
+.flexbar {
+    width: 99%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5% 0.5%;
+    flex-grow: 1;
+}
+
+.flex-links-icon {
+    max-height: 16vh;
+    max-width: 16vw;
+    height: auto;
+}
+
+.flex-links-title {
+    padding: 1% 2%;
+    font-size: 1.25em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.flex-links-description {
+    text-align: center;
+    padding: 1% 1%;
+    font-size: 1em;
+}
+
+ul {
+    list-style: none;
+}
+
+.text-padded {
+    padding: 0.5% 0.5%;
+}
