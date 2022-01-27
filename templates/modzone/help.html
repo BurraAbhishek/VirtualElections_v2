@@ -13,20 +13,99 @@
             table {
                 width: 98%;
             }
+            .response {
+                font-size: 1.25em;
+                padding: 0 2%;
+                display: none;
+            }
         </style>
     </head>
 
     <body>
         <header class="appbar">Moderation Help pages</header>
-        <h1>This page is still under construction!</h1>
-        <h2>Election settings are still under construction</h2>
-        <p1>They will soon be released.</p1>
-        <h2>How to disable "None of the above" votes?</h2>
-        <p1>
+        <h1>Moderation FAQ</h1>
+        <h2 onclick="javascript:showPage('admin-urls');">
+            Why does this site use a custom admin page instead of the default
+            Django site administration page?
+        </h2>
+        <div class="response" id="admin-urls">
+            The default admin pages are best suited for SQL databases, and none
+            of our databases run SQL code. Not using the default admin pages
+            enables customization of the administration login pages and other
+            views.
+            <br />
+            This also means that using the default Django administration pages
+            to log in as an admin or a superuser will not work here.
+        </div>
+        <h2 onclick="javascript:showPage('recommended-access');">
+            What are the recommended access controls?
+        </h2>
+        <div class="response" id="recommended-access">
+            At a time, keep the following configuration:
+            <ul>
+                <li>
+                    Registrations:
+                    <ul>
+                        <li>Open Voter Registrations</li>
+                        <li>Open Contestant Registrations</li>
+                        <li>Close voting session</li>
+                        <li>Don't show results</li>
+                    </ul>
+                </li>
+                <li>
+                    Voting:
+                    <ul>
+                        <li>Close Voter Registrations</li>
+                        <li>Close Contestant Registrations</li>
+                        <li>Open voting session</li>
+                        <li>Don't show results</li>
+                    </ul>
+                </li>
+                <li>
+                    Results:
+                    <ul>
+                        <li>Close Voter Registrations</li>
+                        <li>Close Contestant Registrations</li>
+                        <li>Close voting session</li>
+                        <li>Show results to public</li>
+                    </ul>
+                </li>
+            </ul>
+            Please note that this is not enforced! Admins can choose their own
+            configuration.
+        </div>
+        <h2 onclick="javascript:showPage('disable-nota');">
+            How to disable "None of the above" votes?
+        </h2>
+        <div class="response" id="disable-nota">
             Disqualify "None of the above". Go to "Monitor Contestants", then
             click on the button for monitoring "None of the above" votes, then
             set Current Status to Disqualify and save. To re-enable that option,
             just do the same, but set Current Status to Clean.
-        </p1>
+        </div>
+        <script>
+            function showPage(page) {
+                var responses = document.getElementsByClassName("response");
+                for (var i = 0; i < responses.length; i++) {
+                    responses[i].style.display = "none";
+                }
+                if (document.getElementById(page).style.display == "none") {
+                    document.getElementById(page).style.display = "block";
+                } else {
+                    document.getElementById(page).style.display = "none";
+                }
+            }
+            function loadPageId() {
+                var url = window.location.href;
+                var id_url = url.split("#");
+                if (id_url.length == 2) {
+                    id_str = String(id_url[1]);
+                    try {
+                        showPage(id_str);
+                    } catch (e) {}
+                }
+            }
+            loadPageId();
+        </script>
     </body>
 </html>
