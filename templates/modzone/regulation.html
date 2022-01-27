@@ -18,6 +18,19 @@
 
     <body>
         <header class="appbar">Election Settings</header>
-        <h1>This page is still under construction!</h1>
+        <form action="#" method="POST">
+            <table> 
+                {{ form.as_table }} {% csrf_token %}
+                <tr>
+                    <td colspan="2">
+                        <input
+                            type="submit"
+                            class="submitbtn"
+                            value="{{ submitlabel }}"
+                        />
+                    </td>
+                </tr>
+            </table>
+        </form>
     </body>
 </html>
