@@ -17,7 +17,7 @@ def serve(request) -> render:
 def gen_voterID(size):
     voter_id = gen_id(size)
     voters = mongo_client.db_get_collection("user4")
-    criterion = dict(_id="Test(Test)")
+    criterion = dict(_id=voter_id)
     if (voters.find_one(criterion)) is None:
         return voter_id
     else:
