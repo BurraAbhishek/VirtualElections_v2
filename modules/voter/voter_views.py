@@ -195,7 +195,6 @@ def voter_edit(request):
                     "oops/password_error.html"
                 )
             try:
-                print(auth.changed_data)
                 update_if_changed(auth, cred_id, "cname", "name")
                 dateobject = auth.cleaned_data["cdob"]
                 dates = [
