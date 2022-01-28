@@ -52,6 +52,7 @@ def party_view(request):
                     "candidate_identification": {
                         voter_idtype: voter_id_value
                     },
+                    "manifesto": form.cleaned_data["party_manifesto"],
                     "password": make_password(form.cleaned_data["cpd1"]),
                     "showProfile": showProfile,
                     "isSymbolUploaded": False,
@@ -94,9 +95,9 @@ def party_view(request):
 
 def update_if_changed(form, id, attr, key, value="", isDefaultValue=True):
     if attr in form.changed_data:
-        voters = mongo_client.db_get_collection("user4")
+        candidates = mongo_client.db_get_collection("user3")
         if isDefaultValue:
-            voters.find_one_and_update(
+            candidates.find_one_and_update(
                 {
                     "_id": id
                 },
@@ -107,7 +108,7 @@ def update_if_changed(form, id, attr, key, value="", isDefaultValue=True):
                 }
             )
         else:
-            voters.find_one_and_update(
+            candidates.find_one_and_update(
                 {
                     "_id": id
                 },
@@ -129,13 +130,15 @@ def voter_edit_login(request):
             cred_pass = cred_id["password"]
             u_pass = auth.cleaned_data["cpass"]
             if check_password(u_pass, cred_pass):
-                cred_idtype = list(cred_id["identification"].keys())[0]
+                cred_idtype = list(
+                    cred_id["candidate_identification"].keys()
+                )[0]
                 form_initial_data = {
                     "party_name": cred_id["party_name"],
                     "cname": cred_id["candidate_name"],
                     "age": cred_id["candidate_age"],
                     "citype": cred_idtype,
-                    "cidno": cred_id["identification"][cred_idtype],
+                    "cidno": cred_id["candidate_identification"][cred_idtype],
                     "cpd1": u_pass,
                     "cpd2": u_pass,
                 }
@@ -183,24 +186,15 @@ def voter_edit(request):
                 cred_id = str(request.session["party"])
             except:
                 raise PermissionDenied
-            try:
-                print(auth.changed_data)
-                update_if_changed(auth, cred_id, "cname", "name")
-                dateobject = auth.cleaned_data["cdob"]
-                dates = [
-                    int(dateobject.strftime("%Y")),
-                    int(dateobject.strftime("%m")),
-                    int(dateobject.strftime("%d")),
-                ]
-                update_if_changed(
-                    auth,
-                    cred_id,
-                    "cdob",
-                    "date_of_birth",
-                    value=dates,
-                    isDefaultValue=False
+            if auth.cleaned_data["cpd1"] != auth.cleaned_data["cpd2"]:
+                return render(
+                    request,
+                    "oops/password_error.html"
                 )
-                update_if_changed(auth, cred_id, "cgender", "gender")
+            try:
+                update_if_changed(auth, cred_id, "party_name", "party_name")
+                update_if_changed(auth, cred_id, "cname", "candidate_name")
+                update_if_changed(auth, cred_id, "age", "candidate_age")
                 identification = {
                     auth.cleaned_data["citype"]: auth.cleaned_data["cidno"]
                 }
@@ -212,6 +206,28 @@ def voter_edit(request):
                     value=identification,
                     isDefaultValue=False
                 )
+                update_if_changed(
+                    auth,
+                    cred_id,
+                    "cpd1",
+                    "password",
+                    value=make_password(auth.cleaned_data["cpd1"]),
+                    isDefaultValue=False
+                )
+                if auth.cleaned_data["show_profile"] == "False":
+                    showProfile = False
+                else:
+                    showProfile = True
+                update_if_changed(
+                    auth,
+                    cred_id,
+                    "show_profile",
+                    "showProfile",
+                    value=showProfile,
+                    isDefaultValue=False
+                )
+                if request.session.get("party"):
+                    request.session.__delitem__("party")
                 return render(
                     request,
                     "oops/security_closepage.html",
