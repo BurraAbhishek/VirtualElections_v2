@@ -189,6 +189,11 @@ def voter_edit(request):
                 cred_id = str(request.session["voter"])
             except:
                 raise PermissionDenied
+            if auth.cleaned_data["cpd1"] != auth.cleaned_data["cpd2"]:
+                return render(
+                    request,
+                    "oops/password_error.html"
+                )
             try:
                 print(auth.changed_data)
                 update_if_changed(auth, cred_id, "cname", "name")
@@ -218,6 +223,16 @@ def voter_edit(request):
                     value=identification,
                     isDefaultValue=False
                 )
+                update_if_changed(
+                    auth,
+                    cred_id,
+                    "cpd1",
+                    "password",
+                    value=make_password(auth.cleaned_data["cpd1"]),
+                    isDefaultValue=False
+                )
+                if request.session.get("voter"):
+                    request.session.__delitem__("voter")
                 return render(
                     request,
                     "oops/security_closepage.html",
