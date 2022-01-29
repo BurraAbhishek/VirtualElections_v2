@@ -38,7 +38,10 @@ def voter_screening(request):
                 votes = mongo_client.db_get_collection("vote5")
                 vote = list(votes.find({"_id": voterid}))
                 if len(vote) > 0:
-                    raise PermissionDenied
+                    return render(
+                        request,
+                        "oops/already_voted.html"
+                    )
                 request.session["voter"] = cred_id["_id"]
                 selected = user3_filter()
                 selected.reverse()
