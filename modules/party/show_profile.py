@@ -10,13 +10,16 @@ def can_view(request, profile, setting) -> bool:
         return True
     elif setting["views"] == "Show All":
         return True
-    elif setting["views"] == "Hidel":
+    elif setting["views"] == "Hide All":
         return False
     else:
         return bool(profile["showProfile"])
 
 
 def canShowMark(request, profile, setting) -> bool:
+    if request.session.get("party"):
+        if str(request.session["party"]) == str(profile["_id"]):
+            return False
     if not profile["tosViolation"]:
         return False
     elif request.session.get("mod"):
