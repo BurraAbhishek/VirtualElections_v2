@@ -58,11 +58,13 @@ urlpatterns = [
     path('modzone/ban/', ban.ban),
     path('modzone/regulation/', regulation.mod_control_election),
     path('modzone/getstarted/', mod_doc.show_moderator_helppages),
+    path('modzone/recompute/', result_view.reset_result),
     # Casting votes
     path('polls/', election_view.voter_screening),
     path('polls/cast/', cast.cast_vote),
     # Results and Exit Polls
     path('results/', result_view.result_view),
+    path('results/turnout/gender/', result_view.voter_turnout_gender),
     # Personalization
     path('customize/', customize.personalization)
 ]
