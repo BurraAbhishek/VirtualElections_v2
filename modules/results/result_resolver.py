@@ -6,8 +6,15 @@ def gender_turnout():
     turnout = mongo_client.db_get_collection("turnout")
     vote5 = mongo_client.db_get_collection("vote5").find()
     user_vote5 = []
+    gender_total = {
+        "_id": "gender_all",
+        "Male": 0,
+        "Female": 0,
+        "Other": 0,
+        "Total": 0
+    }
     gender_composition = {
-        "_id": "gender",
+        "_id": "gender_composition",
         "Male": 0,
         "Female": 0,
         "Other": 0,
@@ -17,15 +24,33 @@ def gender_turnout():
         user_vote5.append(crypt.str_decrypt(i["_id"]))
     user4 = mongo_client.db_get_collection("user4").find()
     for i in user4:
+        gender_total[i["gender"]] += 1
+        gender_total["Total"] += 1
         if i["_id"] in user_vote5:
             gender_composition[i["gender"]] += 1
             gender_composition["Total"] += 1
+    try:
+        turnout.insert_one(gender_total)
+    except:
+        turnout.update_one(
+            {
+                '_id': "gender_total"
+            },
+            {
+                "$set": {
+                    'Male': gender_total["Male"],
+                    'Female': gender_total["Female"],
+                    'Other': gender_total["Other"],
+                    'Total': gender_total["Total"]
+                }
+            }
+        )
     try:
         turnout.insert_one(gender_composition)
     except:
         turnout.update_one(
             {
-                '_id': "gender"
+                '_id': "gender_composition"
             },
             {
                 "$set": {
