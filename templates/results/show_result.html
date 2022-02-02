@@ -13,11 +13,40 @@
             table {
                 width: 98%;
             }
+
+            .flex-horizontal {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .submitbtn {
+                padding: 1% 1%;
+                width: fit-content;
+            }
+
+            .submitbtn a {
+                color: inherit;
+                text-decoration: none;
+            }
         </style>
     </head>
 
     <body>
         <header class="appbar">Results</header>
+        <h1>Turnout</h1>
+        <table>
+            <tr>
+                <td class="flex-horizontal">
+                    <div class="submitbtn">
+                        <a class="center-text" href="turnout/gender/"
+                            >Turnout by gender</a
+                        >
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <h1>Election results</h1>
         <table>
             <tr>
                 <th>Contestant</th>
