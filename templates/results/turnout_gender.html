@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Virtual Election Administration</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(2);
+        </script>
+        <style>
+            table {
+                width: 100%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="appbar">Voters by Gender</header>
+        <table>
+            <tr>
+                <th>Gender</th>
+                <th>Total</th>
+                <th>Participated</th>
+                <th>Composition (%)</th>
+                <th>Turnout (%)</th>
+            </tr>
+            <tr>
+                <td>Male</td>
+                <td>{{ total.Male }}</td>
+                <td>{{ stats.Male }}</td>
+                <td>{{ stats_percent.Male }}</td>
+                <td>{{ turnout.Male }}</td>
+            </tr>
+            <tr>
+                <td>Female</td>
+                <td>{{ total.Female }}</td>
+                <td>{{ stats.Female }}</td>
+                <td>{{ stats_percent.Female }}</td>
+                <td>{{ turnout.Female }}</td>
+            </tr>
+            <tr>
+                <td>Other</td>
+                <td>{{ total.Other }}</td>
+                <td>{{ stats.Other }}</td>
+                <td>{{ stats_percent.Other }}</td>
+                <td>{{ turnout.Other }}</td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td>{{ total.Total }}</td>
+                <td>{{ stats.Total }}</td>
+                <td>100.0</td>
+                <td>{{ turnout.Total }}</td>
+            </tr>
+        </table>
+    </body>
+</html>
