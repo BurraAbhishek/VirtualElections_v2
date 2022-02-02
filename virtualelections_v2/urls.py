@@ -18,7 +18,7 @@ from django.urls import path
 
 from modules.modzone import adder, startmod, accesscontrols
 from modules.modzone import logout, ban, regulation, mod_doc
-from modules.common import customize, index, documentation
+from modules.common import customize, index, documentation, robots_txt
 from modules.voter import voter_views
 from modules.election import election_view, cast
 from modules.party import party_views, show_profile
@@ -66,5 +66,7 @@ urlpatterns = [
     path('results/', result_view.result_view),
     path('results/turnout/gender/', result_view.voter_turnout_gender),
     # Personalization
-    path('customize/', customize.personalization)
+    path('customize/', customize.personalization),
+    # Robots (robots.txt)
+    path('robots.txt', robots_txt.show_robots)
 ]
