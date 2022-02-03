@@ -1,10 +1,11 @@
 from bin.mongodb import mongo_client
-from modules.common import crypt
+from modules.common import crypt, age, age_filter
 
 
 def gender_turnout():
     turnout = mongo_client.db_get_collection("turnout")
     vote5 = mongo_client.db_get_collection("vote5").find()
+    mod2 = mongo_client.db_get_collection("mod2")
     user_vote5 = []
     gender_total = {
         "_id": "gender_all",
@@ -24,8 +25,16 @@ def gender_turnout():
         user_vote5.append(crypt.str_decrypt(i["_id"]))
     user4 = mongo_client.db_get_collection("user4").find()
     for i in user4:
-        gender_total[i["gender"]] += 1
-        gender_total["Total"] += 1
+        if age_filter.user_age_filter(
+            age.calculateAge(
+                i["date_of_birth"][0],
+                i["date_of_birth"][1],
+                i["date_of_birth"][2]
+            ),
+            mod2.find_one({"_id": "voter_ages"})
+        ):
+            gender_total[i["gender"]] += 1
+            gender_total["Total"] += 1
         if i["_id"] in user_vote5:
             gender_composition[i["gender"]] += 1
             gender_composition["Total"] += 1
