@@ -27,7 +27,7 @@ def update_if_changed(collection, form, formKey, id, dbKey, value=None):
 
 
 def voter_age_requirement(form) -> bool:
-    b1 = form.cleaned_data["votersMustHaveAgeConstraint"]
+    b1 = not form.cleaned_data["votersMustHaveAgeConstraint"]
     i1 = form.cleaned_data["votersMinAge"]
     i2 = form.cleaned_data["votersMaxAge"]
     b2 = (i1 <= 0) and (i2 >= 100)
@@ -35,7 +35,7 @@ def voter_age_requirement(form) -> bool:
 
 
 def candidate_age_requirement(form) -> bool:
-    b1 = form.cleaned_data["candidatesMustHaveAgeConstraint"]
+    b1 = not form.cleaned_data["candidatesMustHaveAgeConstraint"]
     i1 = form.cleaned_data["candidatesMinAge"]
     i2 = form.cleaned_data["candidatesMaxAge"]
     b2 = (i1 <= 0) and (i2 >= 100)
