@@ -34,7 +34,7 @@ def gender_turnout():
     except:
         turnout.update_one(
             {
-                '_id': "gender_total"
+                '_id': "gender_all"
             },
             {
                 "$set": {
