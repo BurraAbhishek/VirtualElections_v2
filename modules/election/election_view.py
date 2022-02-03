@@ -4,7 +4,8 @@ from django.contrib.auth.hashers import check_password
 from modules.voter.forms import VoterEditForm
 from modules.election.voting_form import CastVote
 from bin.mongodb import mongo_client
-from modules.common import crypt
+from modules.common import crypt, age
+from modules.common.age_filter import user_age_filter
 
 
 def user3_filter():
@@ -34,6 +35,16 @@ def voter_screening(request):
             cred_pass = cred_id["password"]
             u_pass = auth.cleaned_data["cpass"]
             if check_password(u_pass, cred_pass):
+                voterages = authorizationcollection.find_one(
+                    {"_id": "voter_ages"}
+                )
+                voter_age = age.calculateAge(
+                    cred_id["date_of_birth"][0],
+                    cred_id["date_of_birth"][1],
+                    cred_id["date_of_birth"][2]
+                )
+                if not user_age_filter(voter_age, voterages):
+                    raise PermissionDenied
                 voterid = crypt.str_encrypt(cred_id["_id"])
                 votes = mongo_client.db_get_collection("vote5")
                 vote = list(votes.find({"_id": voterid}))
