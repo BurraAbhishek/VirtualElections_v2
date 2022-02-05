@@ -129,7 +129,10 @@ def voter_edit_login(request):
                     voter_idtype: voter_id_value
                 }
             })
-            cred_pass = cred_id["password"]
+            try:
+                cred_pass = cred_id["password"]
+            except:
+                return HttpResponseRedirect("/voter/registration/")
             u_pass = auth.cleaned_data["cpass"]
             if check_password(u_pass, cred_pass):
                 cred_idtype = list(cred_id["identification"].keys())[0]
