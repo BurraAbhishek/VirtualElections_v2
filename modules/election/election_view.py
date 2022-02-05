@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth.hashers import check_password
@@ -32,7 +33,10 @@ def voter_screening(request):
                     voter_idtype: voter_id_value
                 }
             })
-            cred_pass = cred_id["password"]
+            try:
+                cred_pass = cred_id["password"]
+            except:
+                return HttpResponseRedirect("/voter/registration/")
             u_pass = auth.cleaned_data["cpass"]
             if check_password(u_pass, cred_pass):
                 voterages = authorizationcollection.find_one(
