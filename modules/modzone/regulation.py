@@ -128,7 +128,7 @@ def post_mod_control(request):
             )
         if not candidate_age_requirement(form):
             mod2.find_one_and_update(
-                {"_id": "voter_ages"},
+                {"_id": "candidate_ages"},
                 {
                     "$set":
                     {
