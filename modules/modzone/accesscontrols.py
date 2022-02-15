@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from modules.modzone.electorsform import AccessMod
+from django.core.exceptions import PermissionDenied
 from bin.mongodb import mongo_client
 
 
@@ -44,6 +45,8 @@ def render_access(request) -> render:
 
 
 def control_access(request):
+    if not request.session.get("mod"):
+        raise PermissionDenied
     if request.method == "POST":
         form = AccessMod(request.POST)
         if form.is_valid():
