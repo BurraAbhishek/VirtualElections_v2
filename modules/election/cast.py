@@ -4,6 +4,7 @@ from modules.election.voting_form import CastVote
 from bin.mongodb import mongo_client
 from modules.common.shrug import is_shrug
 from modules.common import crypt
+from modules.election.filters import is_candidate_qualified
 
 
 def successfully_voted(request) -> render:
@@ -45,8 +46,7 @@ def cast_vote(request):
             vote_candidate_id = str(vote.cleaned_data["party_id"])
             if is_shrug(vote_candidate_id):
                 user3 = mongo_client.db_get_collection("user3")
-                user3_voted = user3.find_one({"_id": vote_candidate_id})
-                if user3_voted["tosViolation"] is True:
+                if not is_candidate_qualified(vote_candidate_id):
                     raise PermissionDenied
                 else:
                     process_vote(request, vote_candidate_id)
