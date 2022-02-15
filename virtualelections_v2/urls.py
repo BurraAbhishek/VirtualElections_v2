@@ -68,5 +68,6 @@ urlpatterns = [
     # Personalization
     path('customize/', customize.personalization),
     # Robots (robots.txt)
-    path('robots.txt', robots_txt.show_robots)
+    path('robots.txt', robots_txt.show_robots),
+    path('robots.txt/', robots_txt.route_to_correct_robots)
 ]
