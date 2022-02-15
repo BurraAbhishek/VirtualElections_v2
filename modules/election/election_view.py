@@ -7,12 +7,9 @@ from modules.election.voting_form import CastVote
 from bin.mongodb import mongo_client
 from modules.common import crypt, age
 from modules.common.age_filter import user_age_filter
-
-
-def user3_filter() -> list:
-    user3 = mongo_client.db_get_collection("user3")
-    user3_allowed = user3.find({"tosViolation": False})
-    return list(user3_allowed)
+from modules.election.filters import user3_filter
+from modules.election.filters import age_filter
+from modules.election.filters import must_vote_filter
 
 
 def page_screening(request) -> render:
@@ -27,7 +24,9 @@ def page_screening(request) -> render:
 
 
 def page_voting(request) -> render:
-    selected = user3_filter()
+    selected_age = user3_filter()
+    selected_provisional = age_filter(selected_age)
+    selected = must_vote_filter(selected_provisional)
     selected.reverse()
     for i in selected:
         i["id"] = i["_id"]
