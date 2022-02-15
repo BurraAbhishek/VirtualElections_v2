@@ -9,10 +9,45 @@ from modules.common import crypt, age
 from modules.common.age_filter import user_age_filter
 
 
-def user3_filter():
+def user3_filter() -> list:
     user3 = mongo_client.db_get_collection("user3")
     user3_allowed = user3.find({"tosViolation": False})
     return list(user3_allowed)
+
+
+def page_screening(request) -> render:
+    return render(
+        request,
+        "election/editlogin.html",
+        {
+            "form": VoterEditForm(),
+            "submitlabel": "Log In"
+        }
+    )
+
+
+def page_voting(request) -> render:
+    selected = user3_filter()
+    selected.reverse()
+    for i in selected:
+        i["id"] = i["_id"]
+    return render(
+        request,
+        "election/castvote.html",
+        {
+            "form": CastVote,
+            "candidates": selected,
+            "submitlabel": "Save Changes"
+        }
+    )
+
+
+def duplicate_vote_disallowed(request) -> render:
+    return render(
+        request,
+        "oops/already_voted.html",
+        status=403
+    )
 
 
 def voter_screening(request):
@@ -53,41 +88,12 @@ def voter_screening(request):
                 votes = mongo_client.db_get_collection("vote5")
                 vote = list(votes.find({"_id": voterid}))
                 if len(vote) > 0:
-                    return render(
-                        request,
-                        "oops/already_voted.html"
-                    )
+                    return duplicate_vote_disallowed(request)
                 request.session["voter"] = cred_id["_id"]
-                selected = user3_filter()
-                selected.reverse()
-                for i in selected:
-                    i["id"] = i["_id"]
-                return render(
-                    request,
-                    "election/castvote.html",
-                    {
-                        "form": CastVote,
-                        "candidates": selected,
-                        "submitlabel": "Save Changes"
-                    }
-                )
+                return page_voting(request)
             else:
-                return render(
-                    request,
-                    "voter/editlogin.html",
-                    {
-                        "form": VoterEditForm(),
-                        "submitlabel": "Log In"
-                    }
-                )
+                return page_screening(request)
         else:
             raise PermissionDenied
     else:
-        return render(
-            request,
-            "election/editlogin.html",
-            {
-                "form": VoterEditForm(),
-                "submitlabel": "Log In"
-            }
-        )
+        return page_screening(request)
