@@ -1,9 +1,9 @@
-from django.http import FileResponse
+from django.http import FileResponse, HttpResponseRedirect
 
 # Since STATICFILES_DIRS is static/
 
 
-def show_robots(request):
+def show_robots(request) -> FileResponse:
     _ = request
     return FileResponse(
         open(
@@ -11,3 +11,8 @@ def show_robots(request):
             "rb"
         )
     )
+
+
+def route_to_correct_robots(request) -> HttpResponseRedirect:
+    _ = request
+    return HttpResponseRedirect("/robots.txt")
