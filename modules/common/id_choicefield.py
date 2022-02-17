@@ -299,19 +299,19 @@ class IdentificationField(ChoiceField):
         "Zimbabwe National Registration Card"
     ]
     __local = [
-        "Identity Card",
+        "Local Identity Card (Applicable only within an organization)",
     ]
 
     def __init__(
         self,
-        localized: bool = False,
+        localized: bool = True,
         **kwargs
     ) -> None:
         choices = []
         if localized:
             for i in self.__local:
                 choices.append((i, i))
-        else:
-            for i in self.__general:
-                choices.append((i, i))
+        for i in self.__general:
+            choices.append((i, i))
+        choices.append(("Other", "Other"))
         super().__init__(choices=choices, **kwargs)
