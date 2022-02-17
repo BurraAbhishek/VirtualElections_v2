@@ -1,5 +1,6 @@
 from django import forms
 from django.forms.widgets import PasswordInput
+from modules.common.id_choicefield import IdentificationField
 
 
 class VoterForm(forms.Form):
@@ -30,7 +31,7 @@ class VoterForm(forms.Form):
         label="Gender"
     )
 
-    citype = forms.CharField(label="Identity Proof (Default: passport)")
+    citype = IdentificationField(label="Identification Proof")
 
     cidno = forms.CharField(label="Passport / ID Number")
 
@@ -49,7 +50,7 @@ class VoterForm(forms.Form):
 
 
 class VoterEditForm(forms.Form):
-    citype = forms.CharField(label="Identity Proof (Default: passport)")
+    citype = IdentificationField(label="Identification Proof")
 
     cidno = forms.CharField(label="Passport / ID Number")
 
