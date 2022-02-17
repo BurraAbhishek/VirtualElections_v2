@@ -38,3 +38,9 @@ ul {
 .text-padded {
     padding: 0.5% 0.5%;
 }
+
+@media only screen and (max-width: 800px) {
+    .flex-links {
+        margin: 1.5% 0.4%;
+    }
+}

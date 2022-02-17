@@ -68,7 +68,9 @@ td {
     background-color: #00ff00;
     color: #0000ff;
     border: none;
-    width: 20%;
+    width: fit-content;
+    margin: 1% 1%;
+    padding: 1% 1%;
     height: 5%;
     font-size: 1.2em;
     font-weight: bold;
@@ -103,4 +105,10 @@ select {
     padding: 0.7em;
     margin: 2% 2%;
     display: flex;
+}
+
+@media only screen and (max-width: 800px) {
+    .violated_appbar {
+        margin: 2% 4%;
+    }
 }
