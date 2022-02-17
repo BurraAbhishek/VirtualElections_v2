@@ -1,5 +1,6 @@
 from django import forms
 from django.forms.widgets import PasswordInput
+from modules.common.id_choicefield import IdentificationField
 
 
 class PartyForm(forms.Form):
@@ -16,9 +17,7 @@ class PartyForm(forms.Form):
 
     age = forms.IntegerField(min_value=0, label="Candidate's Age")
 
-    citype = forms.CharField(
-        label="Identity Proof (Default: passport) of the Candidate"
-    )
+    citype = IdentificationField(label="Identity Proof of the Candidate")
 
     cidno = forms.CharField(label="Passport / ID Number")
 
