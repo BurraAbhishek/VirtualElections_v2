@@ -9,6 +9,12 @@ access_controls = {
 }
 
 
+election_type = {
+    "_id": "election_type",
+    "allow_local": True
+}
+
+
 candidate_privacy_restrictions = {
     "_id": "candidate_privacy",
     "views": "Default",
@@ -42,6 +48,10 @@ def add_access_controls():
     mongo_client.db_insert_one(
         collection="mod2",
         data=access_controls
+    )
+    mongo_client.db_insert_one(
+        collection="mod2",
+        data=election_type
     )
     mongo_client.db_insert_one(
         collection="mod2",
