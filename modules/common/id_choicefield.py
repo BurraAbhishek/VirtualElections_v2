@@ -137,7 +137,7 @@ class IdentificationField(ChoiceField):
         "Indonesia Resident Identification Card",
         "Iranian National Identity Card",
         "Iraq National Card",
-        "Irish (Ireland) Passport Card"
+        "Irish (Ireland) Passport Card",
         "Israeli Passport",
         "Israel Teudat Zehut",
         "Italian Passport",
@@ -210,7 +210,7 @@ class IdentificationField(ChoiceField):
         "Nigeria National Identity Card",
         "North Korea Identity Card",
         "North Macedonia Identity Card",
-        "Norwegian (Norway) Passport"
+        "Norwegian (Norway) Passport",
         "Oman Identity Card",
         "Panama Cedula de Identidad",
         "Pakistani Passport",
