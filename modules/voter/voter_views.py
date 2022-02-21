@@ -25,6 +25,23 @@ def gen_voterID(size):
         return gen_voterID(size)
 
 
+def view_success(request) -> render:
+    success_message = " ".join([
+        "You were successfully registered",
+        "as a voter on this site."
+    ])
+    return render(
+        request,
+        "oops/security_closepage.html",
+        {
+            "success_text": "Registration successful",
+            "success_message": (
+                success_message
+            )
+        }
+    )
+
+
 def voter_view(request):
     authorizationcollection = mongo_client.db_get_collection("mod2")
     authorization = authorizationcollection.find_one(
@@ -56,20 +73,7 @@ def voter_view(request):
                 }
                 try:
                     mongo_client.db_insert_one("user4", voter)
-                    success_message = " ".join([
-                        "You were successfully registered",
-                        "as a voter on this site."
-                    ])
-                    return render(
-                        request,
-                        "oops/security_closepage.html",
-                        {
-                            "success_text": "Registration successful",
-                            "success_message": (
-                                success_message
-                            )
-                        }
-                    )
+                    return view_success(request)
                 except:
                     raise PermissionDenied
             else:
