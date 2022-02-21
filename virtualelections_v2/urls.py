@@ -18,6 +18,7 @@ from django.urls import path
 
 from modules.modzone import adder, startmod, accesscontrols
 from modules.modzone import logout, ban, regulation, mod_doc
+from modules.appeal import appeal_status
 from modules.common import customize, index, documentation, robots_txt
 from modules.voter import voter_views
 from modules.election import election_view, cast
@@ -59,6 +60,8 @@ urlpatterns = [
     path('modzone/regulation/', regulation.mod_control_election),
     path('modzone/getstarted/', mod_doc.show_moderator_helppages),
     path('modzone/recompute/', result_view.reset_result),
+    # Appeals
+    path('appeal/', appeal_status.status),
     # Casting votes
     path('polls/', election_view.voter_screening),
     path('polls/cast/', cast.cast_vote),
