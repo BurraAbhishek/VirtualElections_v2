@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Virtual Election Administration</title>
+        {% load static %}
+        <script src="{% static '/controllers/css.js' %}"></script>
+        <script>
+            loadCSS(1);
+        </script>
+        <style>
+            .appeal_title {
+                font-size: 2.5em;
+                margin: 3% 4%;
+                padding: 1% 1%;
+                border-bottom: 1px solid #898989;
+            }
+            a {
+                margin: 2% 6%;
+                display: block;
+                color: #3692ed;
+                font-size: 1.85em;
+                text-decoration: none;
+                width: 100%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="appbar">Appeal a moderation decision</header>
+        <div class="appeal_title">
+            {{ mark.title }}
+        </div>
+        {% for i in mark.options %}
+        <div>
+            {% if i.type == "return" %}
+            <a href="/menu/">
+                {{ i.body }}
+            </a>
+            {% endif %}
+            {% if i.type == "accept" %}
+            <a href="/appeal/accept/">
+                {{ i.body }}
+            </a>
+            {% endif %}
+            {% if i.type == "deny" %}
+            <a href="/appeal/deny/">
+                {{ i.body }}
+            </a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </body>
+</html>
